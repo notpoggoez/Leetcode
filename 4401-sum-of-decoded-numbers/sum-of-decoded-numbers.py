@@ -9,8 +9,6 @@ class Solution:
             
             x = int(d[:width])
             y = int(d[width:])
-
-            x= x%mod 
             count = (count + pow(x,y,mod))%mod
         
         return count%mod
