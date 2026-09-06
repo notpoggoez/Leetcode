@@ -1,21 +1,18 @@
 class Solution:
     def countRotations(self, s: str, k: int) -> int:
-        count = 0
-        possible = []
+        score = 0
+        n = len(s)
 
-        for i in range(len(s)):
-            new = s[0]
-            shifted = s[1:] + new
-            possible.append(shifted)
-            s = shifted
-        
-        for i in range(len(possible)):
-            curr = 0
-            for j in range(len(possible[i])-1):
-                if possible[i][j] == possible[i][j+1]:
-                    curr +=1 
-            
-            if curr == k:
-                count+=1 
-        
-        return count       
+        for i in range(n-1):
+            if s[i] == s[i+1]:
+                score += 1
+                
+        if s[0] == s[-1]:
+            score +=1
+
+        if (score - 1) == k:
+            return score
+        elif (score == k):
+            return n - score
+        else:
+            return 0
